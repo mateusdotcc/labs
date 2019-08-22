@@ -1,9 +1,18 @@
+html,
+body,
 #app {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .box {
   width: 60px;
   height: 60px;
-  background: red;
+  background: #f00;
   margin: 5px;
 }
