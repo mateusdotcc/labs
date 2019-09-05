@@ -1,83 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 
+import { formatPrice } from '../../util/format';
+import api from '../../services/api';
 import { MdAddShoppingCart } from 'react-icons/md';
 
 import { ProductList } from './styles';
 
-export default function Home() {
-  return (
-    <ProductList>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-nike-air-max-infuriate-iii-low-masculino/82/HZM-1283-182/HZM-1283-182_detalhe1.jpg?resize=280:280"
-          alt="Tenis"
-        />
+export default class Home extends Component {
+  state = {
+    products: [],
+  };
 
-        <strong>Tenis muito legal</strong>
-        <span>R$129,90</span>
+  async componentDidMount() {
+    const response = await api.get('/products');
 
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#FFF" /> 3
-          </div>
+    const data = response.data.map(product => ({
+      ...product,
+      priceFormatted: formatPrice(product.price),
+    }));
 
-          <span>Add to cart</span>
-        </button>
-      </li>
+    this.setState({ products: data });
+  }
 
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-nike-air-max-infuriate-iii-low-masculino/82/HZM-1283-182/HZM-1283-182_detalhe1.jpg?resize=280:280"
-          alt="Tenis"
-        />
+  render() {
+    const { products } = this.state;
 
-        <strong>Tenis muito legal</strong>
-        <span>R$129,90</span>
+    return (
+      <ProductList>
+        {products.map(product => (
+          <li key={product.id}>
+            <img src={product.image} alt={product.title} />
 
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#FFF" /> 3
-          </div>
+            <strong>{product.title}</strong>
+            <span>{product.priceFormatted}</span>
 
-          <span>Add to cart</span>
-        </button>
-      </li>
+            <button type="button">
+              <div>
+                <MdAddShoppingCart size={16} color="#FFF" /> 3
+              </div>
 
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-nike-air-max-infuriate-iii-low-masculino/82/HZM-1283-182/HZM-1283-182_detalhe1.jpg?resize=280:280"
-          alt="Tenis"
-        />
-
-        <strong>Tenis muito legal</strong>
-        <span>R$129,90</span>
-
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#FFF" /> 3
-          </div>
-
-          <span>Add to cart</span>
-        </button>
-      </li>
-
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-nike-air-max-infuriate-iii-low-masculino/82/HZM-1283-182/HZM-1283-182_detalhe1.jpg?resize=280:280"
-          alt="Tenis"
-        />
-
-        <strong>Tenis muito legal</strong>
-        <span>R$129,90</span>
-
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#FFF" /> 3
-          </div>
-
-          <span>Add to cart</span>
-        </button>
-      </li>
-    </ProductList>
-  );
+              <span>Add to cart</span>
+            </button>
+          </li>
+        ))}
+      </ProductList>
+    );
+  }
 }
