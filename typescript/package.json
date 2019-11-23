@@ -1,0 +1,15 @@
+{
+  "name": "init-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "basic.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
