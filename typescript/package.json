@@ -2,8 +2,9 @@
   "name": "init-typescript",
   "version": "1.0.0",
   "description": "",
-  "main": "basic.js",
+  "main": "index.js",
   "scripts": {
+    "watch": "tsc -w",
     "start": "live-server"
   },
   "keywords": [],
