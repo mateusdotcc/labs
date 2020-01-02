@@ -11,7 +11,6 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-var _this = this;
 var isCan = "?";
 console.log(isCan);
 var isCold = true;
@@ -35,16 +34,16 @@ var talkTo = function (people) { return console.log("Hello" + people); };
 talkTo("John");
 // this
 function normalWithThis() {
-    console.log(this);
+    // console.log(this);
 }
 var normalWithThisSpecial = normalWithThis.bind("abc");
 normalWithThis();
 // this??? r => Window
-console.log(this);
-var arrowWithThis = function () { return console.log(_this); }; // r => Window
-arrowWithThis();
-var arrowWithThisSpecial = arrowWithThis.bind({ name: "Ana" });
-arrowWithThisSpecial();
+// console.log(this);
+// const arrowWithThis = () => console.log(this); // r => Window
+// arrowWithThis();
+// const arrowWithThisSpecial = arrowWithThis.bind({ name: "Ana" });
+// arrowWithThisSpecial();
 // Params
 function count(init, end) {
     if (init === void 0) { init = 5; }
@@ -66,10 +65,10 @@ var teamA = ["João", "Maria", "Fernanda"];
 var teamB = __spreadArrays(["Fernando", "Miguel"], teamA, ["Lorena"]);
 console.log(teamB);
 // Rest
-function returnArr(a) {
+function returnArr() {
     var args = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        args[_i - 1] = arguments[_i];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
     }
     console.log(a); // => 1
     return args; // => rest 2, 3 +

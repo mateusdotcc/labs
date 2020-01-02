@@ -36,19 +36,19 @@ talkTo("John");
 // this
 
 function normalWithThis() {
-  console.log(this);
+  // console.log(this);
 }
 
 const normalWithThisSpecial = normalWithThis.bind("abc");
 normalWithThis();
 
 // this??? r => Window
-console.log(this);
-const arrowWithThis = () => console.log(this); // r => Window
-arrowWithThis();
+// console.log(this);
+// const arrowWithThis = () => console.log(this); // r => Window
+// arrowWithThis();
 
-const arrowWithThisSpecial = arrowWithThis.bind({ name: "Ana" });
-arrowWithThisSpecial();
+// const arrowWithThisSpecial = arrowWithThis.bind({ name: "Ana" });
+// arrowWithThisSpecial();
 
 // Params
 
@@ -74,7 +74,7 @@ const teamB: string[] = ["Fernando", "Miguel", ...teamA, "Lorena"];
 console.log(teamB);
 
 // Rest
-function returnArr(a: number, ...args: number[]): number[] {
+function returnArr(...args: number[]): number[] {
   console.log(a); // => 1
   return args; // => rest 2, 3 +
 }
