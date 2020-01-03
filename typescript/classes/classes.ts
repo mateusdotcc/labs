@@ -219,7 +219,7 @@ class Unique {
 console.log(Unique.getInstance().now());
 
 // Readonly
-class Avion {
+class Airplane {
   public readonly model: string;
 
   constructor(model: string, public readonly prefix: string) {
@@ -227,5 +227,5 @@ class Avion {
   }
 }
 
-const turbo = new Avion("111", "222");
+const turbo = new Airplane("111", "222");
 // turbo.model = "error";

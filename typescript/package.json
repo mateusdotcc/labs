@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "live-server": "^1.2.1"
+    "@types/node": "^13.1.2",
+    "live-server": "^1.2.1",
+    "systemjs": "^0.21.6"
   }
 }
